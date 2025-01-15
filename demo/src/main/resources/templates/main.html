@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns = "http://www.thymeleaf.org">
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<!-- This is a really cool design. -->
+<!-- https://www.seaharvest.net.au/ -->
+<body>
+    <nav>
+        <ul>
+            <li><a>About</a></li>
+            <li><a>Recipe</a></li>
+            <li><a>Registration</a></li>
+        </ul>
+    </nav>
+
+     <div class = "box" id = "banner">
+        <div class = "box_h1">
+            <h1>CookCraft</h1>
+            <h2 id = "sub_header">Trust me, I know what I'm doing</h2>
+        </div>
+     </div>
+
+
+     <div class = "box" id = "recipe">
+        <div class = "box_h2">
+            <h2>Recipes</h2>
+        </div>
+
+        <div class = "box_p">
+            <p>There are 4 types of food CookCraft presents to the viewers: Meals (Breakfast, Lunch or Dinner), Appetizers, Deserts, or Drinks (Can contain alcohol).</p>
+        </div>
+
+        <div class = "img_container">
+            <div class = "img_box" id = "appetizer">
+                <img src = "img/appetizer_icon.png" alt = "Appetizer_icon">
+                <h2>Appetizer</h2>
+            </div>
+            
+            <div class = "img_box" id = "meal">
+                <img src = "img/meal_icon.png" alt = "Meal_icon">
+                <h2>Meals</h2>
+            </div>
+
+            <div class = "img_box" id = "dessert">
+                <img src = "img/dessert_icon.png" alt = "Dessert_icon">
+                <h2>Deserts</h2>
+            </div>
+
+            <div class = "img_box" id = "drink">
+                <img src = "img/drink_icon.png" alt = "Drink_icon">
+                <h2>Drinks</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Maybe I should combine about and registration. Registration has too little info going on. -->
+    <div class = "box" id = "about">
+        <div class = "box_h2">
+            <h2>About</h2>
+        </div>
+
+        <div class = "box_p">
+            <p>CookCraft is my second project created using frontend languages HTML, CSS, Javascript alongside with backend languages
+                such as Java and MYSQL with a Java framework Spring Security. This project is a new years resolution for myself. This project was started at January 1, 2025 -> present.
+            </p>
+        </div>
+        <div class = "box_p">
+            <p>CookCraft is a forum that allows registered users to create recipes for others to view.
+                Users can also rate other user's recipes on a scale of 5-stars. The recipe will be rated on the average. 
+                The reviewer can also write down a comment on the user's recipe.
+            </p>
+        </div>
+    </div>
+
+
+    <div class = "box" id = "registration">
+        <div class = "box_h2">
+            <h2>Registration</h2>
+        </div>
+
+        <div class = "box_p">
+            <p>To create an account, click the "sign up" button to create an account. If you already have an account, click on the "login" button.</p>
+        </div>
+    
+        <div class = "btn_container">
+            <a th:href = "@{register}" class = "btn" id = "sign_up">Sign Up</a>
+            
+            <a th:href = "@{login}" class = "btn" id = "login">Login</a>
+        </div>
+    </div>
+    <footer><p>Andrew Ho, 2025</p></footer>
+</body>
+</html>

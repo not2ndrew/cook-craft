@@ -1,0 +1,206 @@
+/* CSS RESET */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* TEXTS */
+h1, h2 {
+    font-family: "Merriweather", sans-serif;
+    font-weight: bolder;
+}
+
+p, a, input {
+    color: black;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+h1 {
+    font-size: 120px;
+    color: white;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+li {
+    padding: 0 15px;
+}
+
+a {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    transition: 0.3s;
+}
+
+
+/* BODY */
+body {
+    background-color: lavenderblush
+}
+
+
+/* boxs AND CONTAINERS */
+.box {
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+    padding: 40px 0;
+}
+
+.box_h2 {
+    padding-bottom: 30px;
+}
+
+
+/* NAV */
+nav {
+    width: 100%;
+    background-color: lavenderblush;
+    padding: 45px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* BANNER */
+#banner {
+    width: 100%;
+    margin: none;
+    padding: 0px;
+    
+    display: flex;
+    justify-content: center;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/burger_banner.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.box_h1 {
+    text-align: center;
+    padding: 5%;
+}
+
+#sub_header {
+    color: white;
+}
+
+
+/* RECIPES */
+.img_container {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top: 10%;
+}
+
+.img_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 2;
+    width: 350px;
+}
+
+img {
+    aspect-ratio: 1 / 1;
+    width: 300px;
+    margin-bottom: 40px;
+}
+
+#appetizer {
+    background-color: azure;
+}
+
+#meal {
+    background-color: aliceblue;
+}
+
+#dessert {
+    background-color: honeydew;
+}
+
+#drink {
+    background-color: cornsilk;
+}
+
+/* ABOUT */
+/* REGISTRATION */
+.btn_container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 3 / 1;
+    width: 350px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+#sign_up {
+    background-color: chocolate;
+    margin-right: 20px;
+}
+
+#login {
+    background-color: cornflowerblue;
+}
+
+
+/* FOOTER */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: lightgray;
+}
+
+
+/* REGISTRATION FORM */
+.form_container {
+    width: 50%;
+    margin: auto;
+}
+
+.input_container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+input {
+    border-style: none;
+    width: 100%;
+    padding: 15px;
+}
+
+.form_h1 h1 {
+    text-align: center;
+    color: black;
+    margin-bottom: 100px;
+}
+
+#username, #fName, #email {
+    margin-right: 20px;
+}
