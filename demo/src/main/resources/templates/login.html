@@ -14,6 +14,10 @@
     </div>
 
     <div class = "form_container">
+        <div class = "message" th:if = "${logout}">
+            <p>You have successfully logged Out.</p>
+        </div>
+
         <form th:action = "@{/login}" method = "post" >
             <!-- If the Email already exists within the database, use Thymeleaf to notify the client. -->
             <div class = "input_container">

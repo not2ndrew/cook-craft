@@ -1,14 +1,80 @@
 <!DOCTYPE html>
 <html lang = "en" xmlns = "http://www.thymeleaf.org">
 <head>
-    <link rel = "stylesheet" type = "text/css" href = "/css/main.css">
+    <!-- TO DO: Create a new CSS File-->
+    <link rel = "stylesheet" type = "text/css" href = "/css/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
+<!-- This Home Page is for USERS, ADMIN, MANAGERS only -->
 <body>
-    <h1>Home Page</h1>
+    <nav>
+        <div class = "nav_container">
+            <div class = "nav_box">
+                <a>View Your Created Recipes</a>
+            </div>
+            <div class = "nav_box">
+                <a>View Favourited Recipes</a>
+            </div>
+            <div class = "nav_box" sec:authorize = "hasRole('ADMIN')">
+                <!-- ADMINS AND MANAGER ONLY FROM BELOW -->
+                <!-- The link will show all users DTO and admins DTO -->
+                <!-- ADMIN will only have CRUD only on Users -->
+                <a>View All Users</a>
+            </div>
+            <div class = "nav_box" sec:authorize = "hasRole('MANAGER')">
+                <!-- MANAGER will have CRUD on everyone -->
+                <a>View All Admins</a>
+            </div>
+        </div>
+        <div class = "nav_container" id = "nav_special">
+            <div class = "nav_box">
+                <a href = "javascript: document.logoutForm.submit()">Logout</a>
+                <form name = "logoutForm" th:action = "@{/logout}" method = "post" style = "display: none;">
+                    <input type = "submit" style = "display: none;">
+                </form>
+            </div>
+        </div>
+
+    </nav>
+
+    <div class = "box_h1">
+        <h1>Home Page</h1>
+    </div>
+    
+
+    <div class = "box">
+        <p>To create a recipe, click on the button</p>
+        <a th:href = "@{home/recipe}">Placeholder</a>
+    </div>
+
+    <!-- TO DO: Make a link connecting to Food recipes already posted. -->
+    <div class = "box">
+        <p>View the Recipes created by others here</p>
+        <div class = "img_container">
+            <div class = "img_box" id = "appetizer">
+                <img src = "img/appetizer_icon.png" alt = "Appetizer_icon">
+                <h2>Appetizer</h2>
+            </div>
+            
+            <div class = "img_box" id = "meal">
+                <img src = "img/meal_icon.png" alt = "Meal_icon">
+                <h2>Meals</h2>
+            </div>
+
+            <div class = "img_box" id = "dessert">
+                <img src = "img/dessert_icon.png" alt = "Dessert_icon">
+                <h2>Deserts</h2>
+            </div>
+
+            <div class = "img_box" id = "drink">
+                <img src = "img/drink_icon.png" alt = "Drink_icon">
+                <h2>Drinks</h2>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

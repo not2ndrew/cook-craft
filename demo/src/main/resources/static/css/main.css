@@ -204,3 +204,9 @@ input {
 #username, #fName, #email {
     margin-right: 20px;
 }
+
+/* MESSAGE */
+.message {
+    background-color: cornflowerblue;
+    text-align: center;
+}

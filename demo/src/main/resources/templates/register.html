@@ -19,6 +19,9 @@
         -->
         
     <div class = "form_container">
+        <div class = "message" th:if = "${error}">
+            <p>Error: Email has already been taken.</p>
+        </div>
         <form th:action = "@{/register}" th:object = "${userRequest}" method = "post">
             <!-- If the Username already exists within the database, use Thymeleaf to notify the client. -->
             <div class = "input_container">

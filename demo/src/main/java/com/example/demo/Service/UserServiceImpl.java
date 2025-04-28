@@ -2,6 +2,7 @@ package com.example.demo.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -15,11 +16,13 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Dto.UserDto;
 import com.example.demo.Entity.Recipe;
+import com.example.demo.Entity.Role;
 import com.example.demo.Entity.User;
-import com.example.demo.Enum.Role;
+import static com.example.demo.Enum.RoleName.*;
 
 import com.example.demo.Mapper.UserDtoMapper;
 import com.example.demo.Mapper.UserRequestMapper;
+import com.example.demo.Repository.RoleRepository;
 import com.example.demo.Repository.UserRepository;
 import com.example.demo.Request.UserRequest;
 
@@ -28,6 +31,7 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
+    private final RoleRepository roleRepository;
     private final UserRepository userRepository;
     private final UserDtoMapper userDtoMapper;
     private final UserRequestMapper userRequestMapper;
@@ -54,7 +58,7 @@ public class UserServiceImpl implements UserService {
         }
 
         User user = new User(
-            new ArrayList<Role>(), 
+            new HashSet<Role>(), 
             userRequest.getUsername(), 
             userRequest.getFName(), 
             userRequest.getLName(), 
@@ -63,9 +67,12 @@ public class UserServiceImpl implements UserService {
             userRequest.getDob(), 
             new ArrayList<Recipe>()
         );
+        
+        Role role = new Role(ROLE_USER);
 
-        user.getRoles().add(Role.USER);
-
+        roleRepository.save(role);
+        user.getRoles().add(role);
+        
         userRepository.save(user);
     }
 
@@ -90,7 +97,7 @@ public class UserServiceImpl implements UserService {
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream()
-            .map(role -> new SimpleGrantedAuthority(role.name()))
+            .map(role -> new SimpleGrantedAuthority(role.getName().name()))
             .collect(Collectors.toList());
     }
 }

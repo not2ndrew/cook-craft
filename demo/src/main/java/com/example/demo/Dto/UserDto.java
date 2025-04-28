@@ -1,8 +1,8 @@
 package com.example.demo.Dto;
 
-import java.util.Collection;
+import java.util.Set;
 
-import com.example.demo.Enum.Role;
+import com.example.demo.Entity.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
-    private Collection<Role> role;
+    private Set<Role> role;
     private String email;
     private String password;
 }

@@ -1,7 +1,9 @@
 package com.example.demo.Request;
 
-import java.util.List;
+import com.example.demo.Enum.RecipeType;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RecipeRequest {
-    private int id;
     private String title;
-    private List<String> listOfIngredients;
+    private String description;
+    
+    @Enumerated(EnumType.STRING)
+    private RecipeType recipeType;
 }

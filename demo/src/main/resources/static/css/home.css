@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* TEXTS */
+h1, h2 {
+    font-family: "Merriweather", sans-serif;
+    font-weight: bolder;
+}
+
+p, a, input {
+    color: black;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+h1 {
+    font-size: 120px;
+    color: black;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+li {
+    padding: 0 15px;
+}
+
+a {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    transition: 0.3s;
+}
+
+
+/* BODY */
+body {
+    background-color: lavenderblush
+}
+
+.box {
+    width: 80%;
+    margin: auto;
+    padding: 40px 0;
+}
+
+
+/* BOXES, CONTAINERS */
+.box_h1 {
+    display: flex;
+    align-items: center;
+}
+
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    background-color: burlywood;
+}
+
+.nav_container {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#nav_special {
+    justify-content: end;
+}
+
+/* RECIPES */
+.img_container {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.img_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 2;
+    width: 350px;
+}
+
+img {
+    aspect-ratio: 1 / 1;
+    width: 300px;
+    margin-bottom: 40px;
+}
+
+#appetizer {
+    background-color: azure;
+}
+
+#meal {
+    background-color: aliceblue;
+}
+
+#dessert {
+    background-color: honeydew;
+}
+
+#drink {
+    background-color: cornsilk;
+}

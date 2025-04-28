@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns = "http://www.thymeleaf.org">
+<head>
+    <!-- TO DO: Create a new CSS File-->
+    <link rel = "stylesheet" type = "text/css" href = "/css/recipe.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <h1>Create a Recipe</h1>
+
+        <!-- TO DO: create 2 buttons: Discard Recipe and Publish Recipe -->
+        <!-- https://teamtreehouse.com/community/how-to-add-the-leave-this-page-stay-on-this-page-popup-to-a-website-when-closing -->
+    </nav>
+    
+    <form th:action = "@{/recipe}" th:object = "${recipeRequest}" method = "post">
+        <div class = "box">
+            <input type = "text" id = "title" th:field = "*{title}" placeholder = "Title">
+        </div>
+
+        <div class = "box">
+            <input type = "text" id = "description" th:field = "*{description}" placeholder = "Description">
+        </div>
+
+        <div class = "box">
+            <h2>Recipe Type:</h2>
+            <select th:field = "*{recipeType}">
+                <option th:value = "APPETIZER">Appetizer</option>
+                <option th:value = "MEAL">Meal</option>
+                <option th:value = "DESSERT">Dessert</option>
+                <option th:value = "DRINK">Drink</option>
+            </select>
+        </div>
+        
+        <!-- Dynamic Ingredient Section -->
+        <!-- Text inputs are retrieved via Javascript and @RequestParam from RecipeCreationController -->
+        <div class = "box">
+            <h2>Ingredients: </h2>
+            <input type = "text" id = "ingredient_text">
+            <button type = "button" class = "btn" id = "createIngredient">Add Ingredient To List</button>
+            
+            <ul id = "ingredient_container"></ul>
+        </div>
+        
+        <!-- Dynamic Instruction Section -->
+        <!-- Text inputs are retrieved via Javascript and @RequestParam from RecipeCreationController -->
+        <div class = "box">
+            <h2>Instructions: </h2>
+            <!-- Each step always start with a bold and large number. -->
+            <input type = "text" id = "step_text">
+            <button type = "button" class = "btn" id = "createInstruction">Create Instructions</button>
+            <ol id = "instruction_container"></ol>
+        </div>
+        <input type = "submit" id = "submit" placeholder = "Submit">
+    </form>
+    <script src = "/javascript/createTextInput.js"></script>
+</body>
+</html>
