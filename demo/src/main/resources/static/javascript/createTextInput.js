@@ -1,127 +1,123 @@
-// Minimum inputs : 0
-// Maximum inputs: 10
 const MIN = 0;
 const MAX_INGREDIENT = 10;
 const MAX_STEPS = 20;
-var numOfIngredients = 0;
-var numOfSteps = 0;
 
-let ingredient_btn = document.getElementById("createIngredient");
-let ul = document.getElementById("ingredient_container");
-let ingredient_input = document.getElementById("ingredient_text");
+let numOfIngredients = 0;
+let numOfSteps = 0;
 
-let instruction_btn = document.getElementById("createInstruction");
-let ol = document.getElementById("instruction_container");
-let step_input = document.getElementById("step_text");
+// Ingredient Elements
+const ingredientBtn = document.getElementById("createIngredient");
+const ingredientList = document.getElementById("ingredient_container");
+const ingredientInput = document.getElementById("ingredient_text");
+const unitSelect = document.getElementById("unit_select");
+const amountInput = document.getElementById("amount_input");
 
-let form = document.getElementById("submit");
+// Instruction Elements
+const instructionBtn = document.getElementById("createInstruction");
+const instructionList = document.getElementById("instruction_container");
+const step_input = document.getElementById("step_text");
 
-function CreateIngredient() {
+const form = document.getElementById("submit");
+
+// Create Hidden Input
+const createHiddenInput = (name, value) => {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    input.value = value;
+    return input;
+}
+
+// Create Delete Button
+const createDeleteBtn = (parentList, itemElement, counterCallBack) => {
+    const btn = document.createElement("button");
+    btn.textContent = "Delete";
+    btn.addEventListener("click", () => {
+        parentList.removeChild(itemElement);
+        counterCallBack();
+    })
+
+    return btn;
+}
+
+// Create Ingredient
+const createIngredient = () => {
     if (numOfIngredients >= MAX_INGREDIENT) {
         alert("Too many Ingredients! Delete some from the list.");
         return;
     }
 
-    let text = ingredient_input.value;
+    const name = ingredientInput.value.trim();
+    const unit = unitSelect.value.trim();
+    const amount = amountInput.value.trim();
 
-    if (text.trim() === "") {
-        alert("Ingredient cannot be an empty string");
+    if (!name || !unit) {
+        alert("Ingredient cannot be empty");
         return;
     }
 
-    let li = document.createElement("li");
-    li.textContent = text;
+    const li = document.createElement("li");
+    li.textContent = `${amount} ${unit} ${name}`;
 
-    // Add hidden Input for Li tag
-    let hiddleInput = document.createElement("input");
-    hiddleInput.type = "hidden";
-    hiddleInput.name = "ingredient"; // VERY IMPORTANT: This is to bind every input into Spring Boot.
-    hiddleInput.value = text;
+    li.appendChild(createHiddenInput("ingredientName", name));
+    li.appendChild(createHiddenInput("ingredientUnit", unit));
+    li.appendChild(createHiddenInput("ingredientAmount", amount));
+    li.appendChild(createDeleteBtn(ingredientList, li, () => numOfIngredients--));
 
-    li.appendChild(hiddleInput);
-
-    // Delete Button 
-    let deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete";
-
-    deleteBtn.addEventListener("click", function() {
-        ul.removeChild(li);
-        numOfIngredients--;
-    });
-
-    li.appendChild(deleteBtn);
-    ul.appendChild(li);
+    ingredientList.appendChild(li);
     numOfIngredients++;
 
-    // Clear text input after adding an ingredient
-    ingredient_input.value = "";
+    ingredientInput.value = "";
+    amountInput.value = "";
 }
 
-function CreateInstruction() {
-    if (numOfSteps > MAX_STEPS) {
+// Create Instruction
+const createInstruction = () => {
+    if (numOfSteps >= MAX_STEPS) {
         alert("Too many steps");
         return;
     }
 
-    let text = step_input.value;
+    const text = step_input.value.trim();
 
-    if (text.trim() === "") {
-        alert("Steps cannot be an empty string");
+    if (!text) {
+        alert("Steps cannot be empty");
         return;
     }
 
-    let li = document.createElement("li");
-    li.textContent = text;
+    const li = document.createElement("li");
 
-    // Add hidden Input for Li tag
-    let hiddenInput = document.createElement("input");
-    hiddenInput.type = "hidden";
-    hiddenInput.name = "instruction";
-    hiddenInput.value = text;
+    li.textContent = `${text}`;
 
-    li.appendChild(hiddenInput);
+    li.appendChild(createHiddenInput("instruction"), name);
+    li.appendChild(createDeleteBtn(instructionList, li, () => numOfSteps--));
 
-    // Delete Button
-    let deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete";
-
-    deleteBtn.addEventListener("click", function() {
-        ol.removeChild(li);
-        numOfSteps--;
-    });
-
-    li.appendChild(deleteBtn);
-    ol.appendChild(li);
+    instructionList.appendChild(li);
     numOfSteps++;
 
-    // Clear text input after adding a step
     step_input.value = "";
 }
 
+// Event Listeners
+ingredientBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    createIngredient();
+});
 
+instructionBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    createInstruction();
+});
 
-/* EVENT LISTENERS*/
-ingredient_btn.addEventListener("click", function(event) {
-    // This is to prevent submitting the form by accident
-    event.preventDefault();
-    CreateIngredient();
-})
-
-instruction_btn.addEventListener("click", function(event) {
-    event.preventDefault();
-    CreateInstruction();
-})
-
-form.addEventListener("submit", function() {
+form.addEventListener("submit", (e) => {
     if (numOfIngredients <= MIN) {
+        e.preventDefault();
         alert("Ingredients cannot be 0!");
         return;
     }
 
-    if (numOfSteps <= 0) {
+    if (numOfSteps <= MIN) {
+        e.preventDefault();
         alert("Steps cannot be 0!");
-        return;
     }
-
-    form.submit();
-})
+});

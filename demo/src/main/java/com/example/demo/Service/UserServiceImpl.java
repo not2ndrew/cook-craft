@@ -68,7 +68,10 @@ public class UserServiceImpl implements UserService {
             new ArrayList<Recipe>()
         );
         
-        Role role = new Role(ROLE_USER);
+        Role role = roleRepository.findByName(ROLE_USER)
+            .orElseGet(() -> 
+                roleRepository.save(new Role(ROLE_USER))
+            );
 
         roleRepository.save(role);
         user.getRoles().add(role);

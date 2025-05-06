@@ -19,11 +19,16 @@
         -->
         
     <div class = "form_container">
+        <!-- If the Username already exists within the database, use Thymeleaf to notify the client. -->
         <div class = "message" th:if = "${error}">
-            <p>Error: Email has already been taken.</p>
+            <p th:text = "${error}"></p>
         </div>
+
+        <div class = "message" th:if = "${success}">
+            <p th:text = "${success}"></p>
+        </div>
+
         <form th:action = "@{/register}" th:object = "${userRequest}" method = "post">
-            <!-- If the Username already exists within the database, use Thymeleaf to notify the client. -->
             <div class = "input_container">
                 <input type = "text" id = "username" th:field = "*{username}" placeholder = "Username">
                 <input type = "date" id = "dob" th:field = "*{dob}" name = "dob">

@@ -3,31 +3,39 @@
     padding: 0;
 }
 
+html {
+    font-size: 10px;
+}
+
 
 /* TEXTS */
-h1, h2 {
+h1, h2, h3 {
     font-family: "Merriweather", sans-serif;
     font-weight: bolder;
 }
 
-p, a, input {
+p, a, input, span {
     color: black;
     font-family: "Raleway", sans-serif;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 2.4rem;
 }
 
 h1 {
-    font-size: 120px;
+    font-size: 12rem;
     color: black;
 }
 
 h2 {
-    font-size: 50px;
+    font-size: 5rem;
+}
+
+h3 {
+    font-size: 5rem;
 }
 
 li {
-    padding: 0 15px;
+    padding: 0 1.5rem;
 }
 
 a {
@@ -36,6 +44,7 @@ a {
 }
 
 a:hover {
+    cursor: pointer;
     color: white;
     transition: 0.3s;
 }
@@ -49,7 +58,7 @@ body {
 .box {
     width: 80%;
     margin: auto;
-    padding: 40px 0;
+    padding: 4rem 0;
 }
 
 
@@ -59,12 +68,36 @@ body {
     align-items: center;
 }
 
+#recipe_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 3rem;
+    padding: 1rem;
+    background-color: mistyrose;
+    border-radius: 0.3rem;
+    border-style: solid;
+}
+
+.box_post {
+    margin-bottom: 0.3rem;
+}
+
+#average_rating {
+    display: flex;
+}
+
 
 /* NAV */
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 40px;
+    padding: 4rem;
     background-color: burlywood;
 }
 
@@ -92,13 +125,13 @@ nav {
     justify-content: center;
     align-items: center;
     aspect-ratio: 1 / 2;
-    width: 350px;
+    width: 35rem;
 }
 
 img {
     aspect-ratio: 1 / 1;
-    width: 300px;
-    margin-bottom: 40px;
+    width: 30rem;
+    margin-bottom: 4rem;
 }
 
 #appetizer {
@@ -115,4 +148,14 @@ img {
 
 #drink {
     background-color: cornsilk;
+}
+
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90rem;
+    height: 16rem;
+    background-color: lightcoral;
+    margin: 0 auto;
 }

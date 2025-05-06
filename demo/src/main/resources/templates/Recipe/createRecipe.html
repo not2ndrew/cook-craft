@@ -17,21 +17,22 @@
     </nav>
     
     <form th:action = "@{/recipe}" th:object = "${recipeRequest}" method = "post">
-        <div class = "box">
-            <input type = "text" id = "title" th:field = "*{title}" placeholder = "Title">
+        <div class = "message" th:if = "${error}">
+            <p th:text = "${error}"></p>
         </div>
 
         <div class = "box">
-            <input type = "text" id = "description" th:field = "*{description}" placeholder = "Description">
+            <input type = "text" class = "text_input" id = "title" th:field = "*{title}" placeholder = "Title">
+        </div>
+
+        <div class = "box">
+            <input type = "text" class = "text_input" id = "description" th:field = "*{description}" placeholder = "Description">
         </div>
 
         <div class = "box">
             <h2>Recipe Type:</h2>
             <select th:field = "*{recipeType}">
-                <option th:value = "APPETIZER">Appetizer</option>
-                <option th:value = "MEAL">Meal</option>
-                <option th:value = "DESSERT">Dessert</option>
-                <option th:value = "DRINK">Drink</option>
+                <option th:each = "type : ${recipeType}" th:value = "${type.name()}" th:text = "${type.name()}"></option>
             </select>
         </div>
         
@@ -39,7 +40,15 @@
         <!-- Text inputs are retrieved via Javascript and @RequestParam from RecipeCreationController -->
         <div class = "box">
             <h2>Ingredients: </h2>
-            <input type = "text" id = "ingredient_text">
+
+            <input type = "number" class = "text_input" id = "amount_input" min = "1" max = "1000" placeholder = "Amount">
+            <select id = "unit_select">
+                <option disabled selected value = "">-- Select --</option>
+                <!-- When Custom Unit is chosen, there will be another text input. -->
+                <option th:each = "unit : ${units}" th:value = "${unit.name()}" th:text = "${unit.name()}"></option>
+            </select>
+            <input type = "text" class = "text_input" id = "ingredient_text" placeholder = "Ingredient">
+
             <button type = "button" class = "btn" id = "createIngredient">Add Ingredient To List</button>
             
             <ul id = "ingredient_container"></ul>
@@ -50,7 +59,7 @@
         <div class = "box">
             <h2>Instructions: </h2>
             <!-- Each step always start with a bold and large number. -->
-            <input type = "text" id = "step_text">
+            <input type = "text" class = "text_input" id = "step_text">
             <button type = "button" class = "btn" id = "createInstruction">Create Instructions</button>
             <ol id = "instruction_container"></ol>
         </div>

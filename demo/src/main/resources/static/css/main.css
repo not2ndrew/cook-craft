@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+html {
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
 
 /* TEXTS */
 h1, h2 {
@@ -15,20 +20,20 @@ p, a, input {
     color: black;
     font-family: "Raleway", sans-serif;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 2.4rem;
 }
 
 h1 {
-    font-size: 120px;
+    font-size: 12rem;
     color: white;
 }
 
 h2 {
-    font-size: 50px;
+    font-size: 5rem;
 }
 
 li {
-    padding: 0 15px;
+    padding: 0 1.5rem;
 }
 
 a {
@@ -37,6 +42,7 @@ a {
 }
 
 a:hover {
+    cursor: pointer;
     color: white;
     transition: 0.3s;
 }
@@ -53,11 +59,11 @@ body {
     height: 100vh;
     width: 80%;
     margin: auto;
-    padding: 40px 0;
+    padding: 4rem 0;
 }
 
 .box_h2 {
-    padding-bottom: 30px;
+    padding-bottom: 3rem;
 }
 
 
@@ -65,7 +71,7 @@ body {
 nav {
     width: 100%;
     background-color: lavenderblush;
-    padding: 45px 0;
+    padding: 4.5rem 0;
 }
 
 nav ul {
@@ -79,8 +85,8 @@ nav ul {
 /* BANNER */
 #banner {
     width: 100%;
-    margin: none;
-    padding: 0px;
+    margin: 0rem;
+    padding: 0rem;
     
     display: flex;
     justify-content: center;
@@ -114,13 +120,13 @@ nav ul {
     justify-content: center;
     align-items: center;
     aspect-ratio: 1 / 2;
-    width: 350px;
+    width: 35rem;
 }
 
 img {
     aspect-ratio: 1 / 1;
-    width: 300px;
-    margin-bottom: 40px;
+    width: 30rem;
+    margin-bottom: 4rem;
 }
 
 #appetizer {
@@ -143,7 +149,7 @@ img {
 /* REGISTRATION */
 .btn_container {
     display: flex;
-    margin-top: 20px;
+    margin-top: 2rem;
 }
 
 .btn {
@@ -151,7 +157,7 @@ img {
     justify-content: center;
     align-items: center;
     aspect-ratio: 3 / 1;
-    width: 350px;
+    width: 35rem;
 }
 
 .btn:hover {
@@ -160,7 +166,7 @@ img {
 
 #sign_up {
     background-color: chocolate;
-    margin-right: 20px;
+    margin-right: 2rem;
 }
 
 #login {
@@ -173,7 +179,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 10rem;
     background-color: lightgray;
 }
 
@@ -186,27 +192,31 @@ footer {
 
 .input_container {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 }
 
 input {
     border-style: none;
     width: 100%;
-    padding: 15px;
+    padding: 1.5rem;
 }
 
 .form_h1 h1 {
     text-align: center;
     color: black;
-    margin-bottom: 100px;
+    margin-bottom: 10rem;
 }
 
 #username, #fName, #email {
-    margin-right: 20px;
+    margin-right: 2rem;
 }
 
 /* MESSAGE */
 .message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4.8rem;
     background-color: cornflowerblue;
-    text-align: center;
+    margin-bottom: 1.6rem;
 }

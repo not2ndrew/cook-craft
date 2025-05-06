@@ -17,4 +17,6 @@ public class RecipeRequest {
     
     @Enumerated(EnumType.STRING)
     private RecipeType recipeType;
+
+    // The List of Ingredients and List of Instructions are both handled separately by Javascript (see createTextInput.js)
 }

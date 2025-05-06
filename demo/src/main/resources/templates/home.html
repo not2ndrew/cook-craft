@@ -55,25 +55,33 @@
     <div class = "box">
         <p>View the Recipes created by others here</p>
         <div class = "img_container">
-            <div class = "img_box" id = "appetizer">
-                <img src = "img/appetizer_icon.png" alt = "Appetizer_icon">
-                <h2>Appetizer</h2>
-            </div>
+            <a th:href = "@{/home/appetizer}">
+                <div class = "img_box" id = "appetizer">
+                    <img src = "img/appetizer_icon.png" alt = "Appetizer_icon">
+                    <h2>Appetizer</h2>
+                </div>
+            </a>
             
-            <div class = "img_box" id = "meal">
-                <img src = "img/meal_icon.png" alt = "Meal_icon">
-                <h2>Meals</h2>
-            </div>
+            <a th:href = "@{/home/meal}">
+                <div class = "img_box" id = "meal">
+                    <img src = "img/meal_icon.png" alt = "Meal_icon">
+                    <h2>Meals</h2>
+                </div>
+            </a>
 
-            <div class = "img_box" id = "dessert">
-                <img src = "img/dessert_icon.png" alt = "Dessert_icon">
-                <h2>Deserts</h2>
-            </div>
+            <a th:href = "@{/home/dessert}">
+                <div class = "img_box" id = "dessert">
+                    <img src = "img/dessert_icon.png" alt = "Dessert_icon">
+                    <h2>Deserts</h2>
+                </div>
+            </a>
 
-            <div class = "img_box" id = "drink">
-                <img src = "img/drink_icon.png" alt = "Drink_icon">
-                <h2>Drinks</h2>
-            </div>
+            <a th:href = "@{/home/drink}">
+                <div class = "img_box" id = "drink">
+                    <img src = "img/drink_icon.png" alt = "Drink_icon">
+                    <h2>Drinks</h2>
+                </div>
+            </a>
         </div>
     </div>
 </body>

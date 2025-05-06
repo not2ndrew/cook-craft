@@ -23,18 +23,18 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute UserRequest userRequest, Model model) {
-        System.out.println(userRequest);
+        try {
+            if (userService.userExist(userRequest)) {
+                model.addAttribute("error", "An account with this email already exists");
+                return "register";
+            }
 
-        // For now, go to main html. I will create a message in the register page if the message is successful
-        // Don't add anything to the database (Since it can only application.properties can only update. Not create-drop)
-
-        if (userService.userExist(userRequest)) {
-            model.addAttribute("error", true);
-            return "register";
-        } else {
-            // TO DO: Add a success message if the User successfully created an account.
             userService.save(userRequest);
-            return "main";
+            model.addAttribute("success", "Account Successfully created. You may now log in");
+            return "register";
+        } catch (RuntimeException e) {
+            model.addAttribute("error", "Something went wrong: " + e.getMessage());
+            return "register";
         }
     }
 }
