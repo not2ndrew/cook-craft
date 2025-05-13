@@ -19,6 +19,32 @@ const step_input = document.getElementById("step_text");
 
 const form = document.getElementById("submit");
 
+// Create Custom Unit Input
+unitSelect.addEventListener("change", (event) => {
+    const selectedValue = event.target.value;
+
+    let existingInput = document.getElementById("customUnitInput");
+
+    if (selectedValue == "custom") {
+        if (!existingInput) {
+            const input = document.createElement("input");
+            input.type = "text";
+            input.name = "ingredientUnit";
+            input.className = "text_input"
+            input.id = "customUnitInput";
+            input.placeholder = "Enter Custom Unit";
+        
+            unitSelect.insertAdjacentElement("afterend", input);
+        }
+    } else {
+        if (existingInput) {
+            existingInput.remove();
+        }
+    }
+
+
+})
+
 // Create Hidden Input
 const createHiddenInput = (name, value) => {
     const input = document.createElement("input");
@@ -48,8 +74,20 @@ const createIngredient = () => {
     }
 
     const name = ingredientInput.value.trim();
-    const unit = unitSelect.value.trim();
+    let unit = unitSelect.value.trim();
     const amount = amountInput.value.trim();
+
+    if (unit == "custom") {
+        const customInput = document.getElementById("customUnitInput");
+        if (customInput) {
+            unit = customInput.value.trim();
+        }
+
+        if (!unit) {
+            alert("Please enter a Custom Unit");
+            return;
+        }
+    }
 
     if (!name || !unit) {
         alert("Ingredient cannot be empty");
@@ -89,7 +127,7 @@ const createInstruction = () => {
 
     li.textContent = `${text}`;
 
-    li.appendChild(createHiddenInput("instruction"), name);
+    li.appendChild(createHiddenInput("instruction", text));
     li.appendChild(createDeleteBtn(instructionList, li, () => numOfSteps--));
 
     instructionList.appendChild(li);

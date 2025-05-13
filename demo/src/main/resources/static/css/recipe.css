@@ -15,16 +15,17 @@ form {
     background-color: aliceblue;
     width: 90%;
     margin: 0 auto;
+    padding: 3rem;
 }
 
 
 /* TEXTS */
-h1, h2 {
+h1, h2, button {
     font-family: "Merriweather", sans-serif;
     font-weight: bolder;
 }
 
-p, a, input, select, option {
+p, a, input, select, option, li {
     color: black;
     font-family: "Raleway", sans-serif;
     font-weight: 500;
@@ -38,6 +39,11 @@ h1 {
 
 h2 {
     font-size: 5rem;
+}
+
+ul, ol {
+    width: 95%;
+    margin: auto;
 }
 
 li {
@@ -56,19 +62,27 @@ a:hover {
 
 input, select {
     padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 
 /* RECIPE */
 .box {
-    margin-bottom: 2rem;
+    padding: 1rem 0;
+}
+
+.ingredient_row {
+    display: flex;
+    flex-direction: column;
 }
 
 .btn {
-    height: 100%;
-    width: 27.1rem;
+    font-size: 2.4rem;
+    height: 5rem;
+    width: 30rem;
 }
 
 .text_input, select {
     height: 5rem;
+    width: 20%;
 }

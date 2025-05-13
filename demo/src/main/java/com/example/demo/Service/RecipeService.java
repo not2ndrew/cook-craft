@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Entity.Comment;
-import com.example.demo.CustomClass.Ingredient;
+import com.example.demo.Entity.Ingredient;
 import com.example.demo.Entity.Recipe;
 import com.example.demo.Entity.User;
 import com.example.demo.Enum.RecipeType;
@@ -22,7 +22,6 @@ public class RecipeService {
     private final UserRepository userRepository;
     private final RecipeRepository recipeRepository;
 
-    private final String emailError = "Email is Not Found.";
     private final String recipeError = "Recipe is Not Found";
 
     public Recipe getRecipeById(int id) {
@@ -33,11 +32,7 @@ public class RecipeService {
         return recipe;
     }
 
-    public void save(String email, RecipeRequest recipeRequest, List<Ingredient> listOfIngredients, List<String> listOfInstructions) {
-        User user = userRepository.findUserByEmail(email).orElseThrow(() -> 
-            new RuntimeException(emailError)
-        );
-
+    public void save(User user, RecipeRequest recipeRequest, List<Ingredient> listOfIngredients, List<String> listOfInstructions) {
         Recipe recipe = new Recipe(
             0, 
             0, 
@@ -45,14 +40,18 @@ public class RecipeService {
             recipeRequest.getDescription(), 
             recipeRequest.getRecipeType(), 
             listOfInstructions, 
-            listOfIngredients, 
-            new ArrayList<Comment>(0)
+            new ArrayList<Ingredient>(), 
+            new ArrayList<Comment>()
         );
 
+        for (Ingredient ingredient : listOfIngredients) {
+            ingredient.setRecipe(recipe);
+            recipe.getIngredients().add(ingredient);
+        }
+
         recipe.setUser(user);
-
         user.getUserRecipes().add(recipe);
-
+        
         recipeRepository.save(recipe);
     }
 
@@ -67,5 +66,18 @@ public class RecipeService {
         }
 
         return output;
+    }
+
+    public User getUserByRecipeId(int id) {
+        Recipe recipe = recipeRepository.findById(id)
+            .orElseThrow(() -> 
+                new RuntimeException("recipe ID: " + id + " is not be found.")
+            );
+        int userId = recipe.getUser().getId();
+
+        User user = userRepository.findById(userId)
+            .orElseThrow(() -> new RuntimeException("User ID: " + userId + " is not found."));
+        
+            return user;
     }
 }

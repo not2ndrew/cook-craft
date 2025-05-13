@@ -1,6 +1,5 @@
 package com.example.demo.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +11,13 @@ import com.example.demo.Service.UserServiceImpl;
 
 @Controller
 public class RegisterController {
-    @Autowired
-    private UserServiceImpl userService;
+    private final UserServiceImpl userService;
+
+
+    public RegisterController(UserServiceImpl userService) {
+        this.userService = userService;
+    }
+    
 
     @GetMapping("/register")
     public String register(Model model) {

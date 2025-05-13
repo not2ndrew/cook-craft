@@ -2,7 +2,7 @@
 <html lang = "en" xmlns = "http://www.thymeleaf.org">
 <head>
     <!-- TO DO: Create a new CSS File-->
-    <link rel = "stylesheet" type = "text/css" href = "/css/home.css">
+    <link rel = "stylesheet" type = "text/css" href = "/css/genericRecipe.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -23,20 +23,21 @@
     <!-- Note: a different font for the rating-->
     <div class = "container" id = "recipe_container">
         <div class = "post" th:each = "recipe : ${recipes}" th:object = "${recipe}">
-            <div class = "box_post">
-                <p th:text = "*{user.username}"></p>
-            </div>
-            <div class = "box_post">
-                <h3 th:text = "*{title}"></h3>
-            </div>
-            <div class = "box_post">
-                <p th:text = "*{description}"></p>
-            </div>
-            <div class = "box_post" id = "average_rating">
-                <p th:text = "*{(numOfRating == 0) ? 0 : #numbers.formatDecimal(ratingSum / numOfRating, 1, 2)}"></p>
-                <p> / 10, </p>
-                <p th:text = "*{numOfRating}"></p>
-            </div>
+            <a th:href = "@{'/recipe/id=' + *{id}}">
+                <div class = "box_post">
+                    <p th:text = "*{user.username}"></p>
+                </div>
+                <div class = "box_post">
+                    <h3 th:text = "*{title}"></h3>
+                </div>
+                <div class = "box_post">
+                    <p th:text = "*{description}"></p>
+                </div>
+                <div class = "box_post" id = "average_rating">
+                    <!-- Java cannot handle 0 / 0. So we will manually insert it ourselves -->
+                    <p th:text = "*{(numOfRating == 0) ? 0 : #numbers.formatDecimal(ratingSum / numOfRating, 1, 1)} + ' / 10, ' + *{numOfRating}"></p>
+                </div>
+            </a>
         </div>
     </div>
 

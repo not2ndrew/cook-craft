@@ -14,7 +14,7 @@ h1, h2, h3 {
     font-weight: bolder;
 }
 
-p, a, input, span {
+p, a, input {
     color: black;
     font-family: "Raleway", sans-serif;
     font-weight: 500;
@@ -32,10 +32,6 @@ h2 {
 
 h3 {
     font-size: 5rem;
-}
-
-li {
-    padding: 0 1.5rem;
 }
 
 a {
@@ -83,15 +79,6 @@ body {
     border-radius: 0.3rem;
     border-style: solid;
 }
-
-.box_post {
-    margin-bottom: 0.3rem;
-}
-
-#average_rating {
-    display: flex;
-}
-
 
 /* NAV */
 nav {
@@ -148,14 +135,4 @@ img {
 
 #drink {
     background-color: cornsilk;
-}
-
-.message {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90rem;
-    height: 16rem;
-    background-color: lightcoral;
-    margin: 0 auto;
 }

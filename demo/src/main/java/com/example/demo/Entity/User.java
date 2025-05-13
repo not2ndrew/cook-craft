@@ -56,17 +56,6 @@ public class User implements UserDetails {
     
     private LocalDate dob;
 
-    /* 
-    The comment should be it's own class rather than a String. 
-    Each comment should contain:
-
-    Date written,
-    The actual comment itself (can be empty and max limit is 100 words),
-    Like and Dislikes numbers.
-
-    */
-    // private List<String> userComments;
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Recipe> userRecipes;
 

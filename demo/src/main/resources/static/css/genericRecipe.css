@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+
+/* TEXTS */
+h1, h2, h3 {
+    font-family: "Merriweather", sans-serif;
+    font-weight: bolder;
+}
+
+p, a, input, ol, ul, li, textarea {
+    color: black;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 2.4rem;
+}
+
+h1 {
+    font-size: 12rem;
+    color: black;
+}
+
+h2 {
+    font-size: 5rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+ul li {
+    list-style: none;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+a {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+
+/* BODY */
+body {
+    background-color: lavenderblush
+}
+
+.box {
+    width: 80%;
+    margin: auto;
+    padding: 4rem 0;
+}
+
+
+/* BOXES, CONTAINERS */
+.box_h1 {
+    display: flex;
+    align-items: center;
+}
+
+#recipe_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 3rem;
+    padding: 1rem;
+    background-color: mistyrose;
+    border-radius: 0.3rem;
+    border-style: solid;
+}
+
+.box_post {
+    margin-bottom: 0.3rem;
+}
+
+#average_rating {
+    display: flex;
+}
+
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90rem;
+    height: 16rem;
+    background-color: lightcoral;
+    margin: 0 auto;
+}
+
+.container, hr {
+    margin-bottom: 3rem;
+}
+
+.ingredient {
+    display: flex;
+    gap: 1rem;
+}
+
+.recipe {
+    width: 95%;
+    margin: auto;
+}
+
+/* Comment Form */
+#comment_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    background-color: lightgray;
+    padding: 3rem;
+    border-radius: 1rem;
+    border-style: solid;
+}
+
+
+/* Comment Section */
+#comment_section {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border-style: solid;
+    gap: 5rem;
+}
+
+.comment_block {
+    display: flex;
+    justify-content: space-between;
+}
+
+#comment_description {
+    padding: 3rem;
+    background-color: white;
+}
+
+#comment_likes {
+    display: flex;
+    gap: 2rem;
+}
+
+#comment {
+    height: 20rem;
+    width: 100rem;
+}
+
+#comment_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+

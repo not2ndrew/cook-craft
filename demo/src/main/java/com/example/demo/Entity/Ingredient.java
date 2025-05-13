@@ -1,7 +1,5 @@
 package com.example.demo.Entity;
 
-import java.time.LocalDate;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -17,32 +15,24 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Comment {
+public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int likes;
-    private int dislikes;
-    private double ratings;
-    private String title;
-    private String description;
-    
-    private LocalDate date;
+
+    private String name;
+
+    private String unit;
+
+    private double amount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    public Comment(int likes, int dislikes, double ratings, String title, String description, LocalDate date) {
-        this.likes = likes;
-        this.dislikes = dislikes;
-        this.ratings = ratings;
-        this.title = title;
-        this.description = description;
-        this.date = date;
+    public Ingredient(String name, String unit, double amount) {
+        this.name = name;
+        this.unit = unit;
+        this.amount = amount;
     }
 }

@@ -2,30 +2,104 @@
 <html lang = "en" xmlns = "http://www.thymeleaf.org">
 <head>
     <!-- TO DO: Create a new CSS File-->
-    <link rel = "stylesheet" type = "text/css" href = "/css/home.css">
+    <link rel = "stylesheet" type = "text/css" href = "/css/genericRecipe.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div th:object = "${recipe}">
-        <h1 th:text = "${title}"></h1>
+<body th:object = "${recipe}">
+    <h1 th:text = "*{title}"></h1>
 
+    <div th:if = "${error}">
+        <p th:text = "${error}"></p>
+    </div>
+
+    <a th:href = "@{/home}">Go back Home</a>
+
+    <div class = "recipe">
         <div class = "container">
-            <p th:text = "${description}"></p>
+            <p th:text = "*{description}"></p>
         </div>
 
-        <!-- Insert Thymeleaf each for both ingredient and instructions -->
         <div class = "container">
             <h2>INGREDIENT</h2>
+            <ul class = "ingredient" th:each = "ingredient : *{ingredients}">
+                <li th:text = "${ingredient.amount}"></li>
+                <li th:text = "${ingredient.unit}"></li>
+                <li th:text = "${ingredient.name}"></li>
+            </ul>
         </div>
 
         <div class = "container">
-            <h2>INSTRUCTIONS</h2>>
+            <h2>INSTRUCTIONS</h2>
+            <ol>
+                <li th:each = "instruction : *{instructions}" th:text = "${instruction}"></li>
+            </ol>
         </div>
 
+        <hr />
 
+        <!-- Comment Section -->
+        <div class = "container" th:if = "${isAuthor}">
+            <p>You cannot comment on your own Recipe</p>
+        </div>
+
+        <div class = "container" th:if = "${empty}">
+            <p th:text = "${empty}"></p>
+        </div>
+
+        <div class = "container" th:if = "${hasComment}">
+            <p>You have already commented on this recipe.</p>
+        </div>
+
+        <div class = "container" id = "comment_container" th:if = "${!isAuthor} and ${!hasComment}">
+            <form id = "comment_form" th:action = "@{'/comment/' + ${recipe.id}}" th:object = "${commentRequest}" method = "post">
+                <div>
+                    <p>Write a title for your review</p>
+                    <input type = "text" th:field = "*{title}" placeholder = "Title">
+                </div>
+
+                <div>
+                    <p>Rate the review from 1 to 10</p>
+                    <input type = "number" th:field = "*{ratings}" min = "1" max = "10" step = ".1">
+                </div>
+                <div>
+                    <p>Write a comment in the text box below</p>
+                    <textarea id = "comment" th:field = "*{description}" type = "text" placeholder = "Leave a Review on this Recipe"></textarea>
+                </div>
+
+                <input type = "submit" placeholder = "submit">
+            </form>
+        </div>
+
+        <hr />
+        
+        <!-- If not empty, then populate list of comments -->
+        <div class = "container" id = "comment_section" th:each = "comment : *{comments}" th:object = "${comment}">
+            <div class = "comment_block">
+                <div id = "comment_title">
+                    <h2 th:text = "*{title}"></h2>
+                    <h3 th:text = "*{ratings}"></h3>
+                </div>
+
+                <div>
+                    <p th:text = "*{recipe.user.username}"></p>
+                    <p th:text = "*{date}"></p>
+                </div>
+            </div>
+
+            <div id = "comment_description">
+                <p th:text = "*{description}"></p>
+            </div>
+
+            <!-- Add a thumbs up and thumbs down icon -->
+            <div id = "comment_likes">
+                <h3 th:text = "*{likes} + ' likes'"></h3>
+                <h3 th:text = "*{dislikes} + ' dislikes'"></h3>
+            </div>
+
+        </div>
     </div>
 </body>
 </html>

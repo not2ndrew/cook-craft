@@ -14,11 +14,15 @@ import com.example.demo.Service.UserServiceImpl;
 
 @Controller
 public class LoginController {
-    private UserServiceImpl userService;
+    private final UserServiceImpl userService;
+
+    public LoginController(UserServiceImpl userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/login")
-    public String loginPage(@RequestParam(value = "logout", required = false) String logout, 
-                            @RequestParam(value = "error", required = false) String error, 
+    public String loginPage(@RequestParam(required = false) String logout, 
+                            @RequestParam(required = false) String error, 
                             Model model) {
         if (logout != null) {
             model.addAttribute("logout", "You have successfully logged out");

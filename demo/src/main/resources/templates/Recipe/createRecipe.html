@@ -11,10 +11,11 @@
 <body>
     <nav>
         <h1>Create a Recipe</h1>
-
-        <!-- TO DO: create 2 buttons: Discard Recipe and Publish Recipe -->
-        <!-- https://teamtreehouse.com/community/how-to-add-the-leave-this-page-stay-on-this-page-popup-to-a-website-when-closing -->
     </nav>
+
+    <div class = "container">
+        <a th:href = "@{/home}">Go back Home</a>
+    </div>
     
     <form th:action = "@{/recipe}" th:object = "${recipeRequest}" method = "post">
         <div class = "message" th:if = "${error}">
@@ -31,6 +32,7 @@
 
         <div class = "box">
             <h2>Recipe Type:</h2>
+
             <select th:field = "*{recipeType}">
                 <option th:each = "type : ${recipeType}" th:value = "${type.name()}" th:text = "${type.name()}"></option>
             </select>
@@ -40,16 +42,20 @@
         <!-- Text inputs are retrieved via Javascript and @RequestParam from RecipeCreationController -->
         <div class = "box">
             <h2>Ingredients: </h2>
+            <div class = "ingredient_row">
+                <input type = "number" class = "text_input" id = "amount_input" min = "1" max = "1000" placeholder = "Amount">
 
-            <input type = "number" class = "text_input" id = "amount_input" min = "1" max = "1000" placeholder = "Amount">
-            <select id = "unit_select">
-                <option disabled selected value = "">-- Select --</option>
-                <!-- When Custom Unit is chosen, there will be another text input. -->
-                <option th:each = "unit : ${units}" th:value = "${unit.name()}" th:text = "${unit.name()}"></option>
-            </select>
-            <input type = "text" class = "text_input" id = "ingredient_text" placeholder = "Ingredient">
+                <select id = "unit_select">
+                    <option disabled selected value = "">-- Select --</option>
+                    <option value = "custom">Custom Unit</option>
+                    <option th:each = "unit : ${units}" th:value = "${unit}" th:text = "${unit}"></option>
+                </select>
+                
+                <input type = "text" class = "text_input" id = "ingredient_text" placeholder = "Ingredient">
+            </div>
 
-            <button type = "button" class = "btn" id = "createIngredient">Add Ingredient To List</button>
+
+            <button type = "button" class = "btn" id = "createIngredient">Create Ingredient</button>
             
             <ul id = "ingredient_container"></ul>
         </div>
@@ -58,11 +64,14 @@
         <!-- Text inputs are retrieved via Javascript and @RequestParam from RecipeCreationController -->
         <div class = "box">
             <h2>Instructions: </h2>
-            <!-- Each step always start with a bold and large number. -->
+
             <input type = "text" class = "text_input" id = "step_text">
+
             <button type = "button" class = "btn" id = "createInstruction">Create Instructions</button>
+
             <ol id = "instruction_container"></ol>
         </div>
+
         <input type = "submit" id = "submit" placeholder = "Submit">
     </form>
     <script src = "/javascript/createTextInput.js"></script>
