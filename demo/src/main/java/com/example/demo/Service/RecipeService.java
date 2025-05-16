@@ -14,20 +14,18 @@ import com.example.demo.Repository.RecipeRepository;
 import com.example.demo.Repository.UserRepository;
 import com.example.demo.Request.RecipeRequest;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RecipeService {
     private final UserRepository userRepository;
     private final RecipeRepository recipeRepository;
 
-    private final String recipeError = "Recipe is Not Found";
-
     public Recipe getRecipeById(int id) {
         Recipe recipe = recipeRepository.findById(id)
             .orElseThrow(() -> 
-                new RuntimeException(recipeError)
+                new RuntimeException("Recipe is Not Found")
             );
         return recipe;
     }

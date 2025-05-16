@@ -18,7 +18,8 @@ public class UserRequestMapper implements Function<User, UserRequest> {
             user.getLName(), 
             user.getEmail(), 
             user.getPassword(), 
-            user.getDob()
+            user.getDob(), 
+            user.getRoles()
         );
     }
 

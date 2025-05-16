@@ -36,25 +36,34 @@
         </div>
 
         <div class = "img_container">
-            <div class = "img_box" id = "appetizer">
-                <img src = "img/appetizer_icon.png" alt = "Appetizer_icon">
-                <h2>Appetizer</h2>
-            </div>
-            
-            <div class = "img_box" id = "meal">
-                <img src = "img/meal_icon.png" alt = "Meal_icon">
-                <h2>Meals</h2>
-            </div>
+            <a th:href = "@{/home/appetizer}">
+                <div class = "img_box" id = "appetizer">
+                    <img src = "img/appetizer_icon.png" alt = "Appetizer_icon">
+                    <h2>Appetizer</h2>
+                </div>
+            </a>
 
-            <div class = "img_box" id = "dessert">
-                <img src = "img/dessert_icon.png" alt = "Dessert_icon">
-                <h2>Deserts</h2>
-            </div>
+            <a th:href = "@{/home/meal}">
+                <div class = "img_box" id = "meal">
+                    <img src = "img/meal_icon.png" alt = "Meal_icon">
+                    <h2>Meals</h2>
+                </div>
+            </a>
 
-            <div class = "img_box" id = "drink">
-                <img src = "img/drink_icon.png" alt = "Drink_icon">
-                <h2>Drinks</h2>
-            </div>
+            <a th:href = "@{/home/dessert}">
+                <div class = "img_box" id = "dessert">
+                    <img src = "img/dessert_icon.png" alt = "Dessert_icon">
+                    <h2>Deserts</h2>
+                </div>
+            </a>
+
+            <a th:href = "@{/home/drink}">
+                <div class = "img_box" id = "drink">
+                    <img src = "img/drink_icon.png" alt = "Drink_icon">
+                    <h2>Drinks</h2>
+                </div>
+            </a>
+
         </div>
     </div>
 
@@ -71,7 +80,7 @@
         </div>
         <div class = "box_p">
             <p>CookCraft is a forum that allows registered users to create recipes for others to view.
-                Users can also rate other user's recipes on a scale of 5-stars. The recipe will be rated on the average. 
+                Users can also rate other user's recipes on a scale of 1 to 10. The recipe will be rated on the average. 
                 The reviewer can also write down a comment on the user's recipe.
             </p>
         </div>

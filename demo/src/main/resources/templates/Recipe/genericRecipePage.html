@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang = "en" xmlns = "http://www.thymeleaf.org">
+<html lang = "en" xmlns = "http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <!-- TO DO: Create a new CSS File-->
     <link rel = "stylesheet" type = "text/css" href = "/css/genericRecipe.css">
@@ -11,8 +12,12 @@
 <body>
     <h1 th:text = "${title}"></h1>
     
-    <div class = "container">
+    <div sec:authorize = "isAuthenticated()" class = "container">
         <a th:href = "@{/home}">Go back Home</a>
+    </div>
+
+    <div sec:authorize = "!isAuthenticated()" class = "container">
+        <a th:href = "@{/}">Go back Menu</a>
     </div>
 
     <div class = "container">

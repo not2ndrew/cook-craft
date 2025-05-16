@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+
+/* TEXTS */
+h1, h2, h3, th {
+    font-family: "Merriweather", sans-serif;
+    font-weight: bolder;
+}
+
+p, a, input, td {
+    color: black;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 2.4rem;
+}
+
+h1 {
+    font-size: 12rem;
+    color: black;
+}
+
+h2 {
+    font-size: 5rem;
+}
+
+h3 {
+    font-size: 5rem;
+}
+
+th {
+    font-size: 4rem;
+}
+
+a {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+
+/* BODY */
+body {
+    background-color: lavenderblush
+}
+
+/* TABLE */
+table {
+    display: flex;
+    justify-content: center;
+}
+
+tbody {
+    background-color: aliceblue;
+    padding: 3rem;
+}
+
+td, th {
+    height: 5rem;
+    vertical-align: middle;
+}

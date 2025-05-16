@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang = "en" xmlns = "http://www.thymeleaf.org">
+<html lang = "en" xmlns = "http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <!-- TO DO: Create a new CSS File-->
     <link rel = "stylesheet" type = "text/css" href = "/css/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
-<!-- This Home Page is for USERS, ADMIN, MANAGERS only -->
 <body>
     <nav>
         <div class = "nav_container">
@@ -19,15 +18,12 @@
             <div class = "nav_box">
                 <a>View Favourited Recipes</a>
             </div>
-            <div class = "nav_box" sec:authorize = "hasRole('ADMIN')">
-                <!-- ADMINS AND MANAGER ONLY FROM BELOW -->
-                <!-- The link will show all users DTO and admins DTO -->
-                <!-- ADMIN will only have CRUD only on Users -->
-                <a>View All Users</a>
-            </div>
-            <div class = "nav_box" sec:authorize = "hasRole('MANAGER')">
-                <!-- MANAGER will have CRUD on everyone -->
-                <a>View All Admins</a>
+            <!-- Admins and Managers can view all users -->
+            <!-- Admins can also delete users and comments except for admins and manager roles -->
+            <!-- Managers can delete anything (except managers) -->
+            <!-- The ability to delete will be shown within the View All Users page. -->
+            <div class = "nav_box" sec:authorize = "hasAnyRole('ADMIN', 'MANAGER')">
+                <a th:href = "@{home/users}">View All Users</a>
             </div>
         </div>
         <div class = "nav_container" id = "nav_special">

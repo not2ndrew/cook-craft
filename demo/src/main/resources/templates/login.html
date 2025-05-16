@@ -15,11 +15,11 @@
 
     <div class = "form_container">
         <div class = "message" th:if = "${logout}">
-            <p th:text = "${logout}"></p>
+            <p>You have successfully logged out</p>
         </div>
 
         <div class = "message" th:if = "${error}">
-            <p th:text = "${error}"></p>
+            <p>Incorrect Email or Password</p>
         </div>
 
         <form th:action = "@{/login}" th:object = "${userRequest}" method = "post" >

@@ -9,14 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.Request.UserRequest;
 import com.example.demo.Service.UserServiceImpl;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class RegisterController {
     private final UserServiceImpl userService;
-
-
-    public RegisterController(UserServiceImpl userService) {
-        this.userService = userService;
-    }
     
 
     @GetMapping("/register")

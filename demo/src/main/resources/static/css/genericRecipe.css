@@ -71,6 +71,12 @@ body {
     align-items: center;
 }
 
+.container_error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #recipe_container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -105,7 +111,7 @@ body {
     margin: 0 auto;
 }
 
-.container, hr {
+.container, hr, .container_error {
     margin-bottom: 3rem;
 }
 

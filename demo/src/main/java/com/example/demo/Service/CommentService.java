@@ -7,15 +7,17 @@ import org.springframework.stereotype.Service;
 import com.example.demo.Entity.Comment;
 import com.example.demo.Entity.Recipe;
 import com.example.demo.Entity.User;
+
 import com.example.demo.Repository.CommentRepository;
 import com.example.demo.Request.CommentRequest;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CommentService {
-    private CommentRepository comRes;
+    private final CommentRepository comRes;
 
     public void createComment(User user, Recipe recipe, CommentRequest commentRequest) {
         Comment comment = new Comment(

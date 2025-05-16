@@ -1,6 +1,9 @@
 package com.example.demo.Request;
 
 import java.time.LocalDate;
+import java.util.Set;
+
+import com.example.demo.Entity.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,4 +19,5 @@ public class UserRequest {
     private String email;
     private String password;
     private LocalDate dob;
+    private Set<Role> role;
 }

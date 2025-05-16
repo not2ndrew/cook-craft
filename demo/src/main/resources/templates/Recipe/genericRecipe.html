@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang = "en" xmlns = "http://www.thymeleaf.org">
+<html lang = "en" xmlns = "http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <!-- TO DO: Create a new CSS File-->
     <link rel = "stylesheet" type = "text/css" href = "/css/genericRecipe.css">
@@ -15,7 +16,14 @@
         <p th:text = "${error}"></p>
     </div>
 
-    <a th:href = "@{/home}">Go back Home</a>
+    <div sec:authorize = "isAuthenticated()">
+        <a th:href = "@{/home}">Go back Home</a>
+    </div>
+
+    <div sec:authorize = "!isAuthenticated()">
+        <a th:href = "@{/}">Go back Menu</a>
+    </div>
+    
 
     <div class = "recipe">
         <div class = "container">
@@ -41,19 +49,24 @@
         <hr />
 
         <!-- Comment Section -->
-        <div class = "container" th:if = "${isAuthor}">
+        <div class = "container_error" th:if = "${isAuthor}">
             <p>You cannot comment on your own Recipe</p>
         </div>
 
-        <div class = "container" th:if = "${empty}">
-            <p th:text = "${empty}"></p>
+        <div class = "container_error" th:if = "${empty}">
+            <p>There are no Comments on this Recipe page.</p>
         </div>
 
-        <div class = "container" th:if = "${hasComment}">
+        <div class = "container_error" th:if = "${hasComment}">
             <p>You have already commented on this recipe.</p>
         </div>
 
-        <div class = "container" id = "comment_container" th:if = "${!isAuthor} and ${!hasComment}">
+        <div class = "container_error" sec:authorize = "!isAuthenticated()">
+            <p>To write a review. You must create an account. Press the link below to sign up</p>
+            <a th:href = "@{/register}">Sign up!</a>
+        </div>
+
+        <div class = "container" id = "comment_container" th:if = "${!isAuthor} and ${!hasComment}" sec:authorize = "isAuthenticated()">
             <form id = "comment_form" th:action = "@{'/comment/' + ${recipe.id}}" th:object = "${commentRequest}" method = "post">
                 <div>
                     <p>Write a title for your review</p>
@@ -95,8 +108,15 @@
 
             <!-- Add a thumbs up and thumbs down icon -->
             <div id = "comment_likes">
-                <h3 th:text = "*{likes} + ' likes'"></h3>
-                <h3 th:text = "*{dislikes} + ' dislikes'"></h3>
+                <div class = "thumbs">
+                    <h3 th:text = "*{likes} + ' likes'"></h3>
+                    <img src = "" id = "thumbsUp" alt = "Thumbs_up_icon">
+                </div>
+
+                <div class = "thumbs">
+                    <h3 th:text = "*{dislikes} + ' dislikes'"></h3>
+                    <img src = "" id = "thumbsDown" alt = "Thumbs_down_icon">
+                </div>
             </div>
 
         </div>

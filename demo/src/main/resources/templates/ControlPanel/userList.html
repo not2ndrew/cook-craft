@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns = "http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "/css/panel.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class = "container">
+        <a th:href = "@{/home}">Go back Home</a>
+    </div>
+    
+    <table>
+        <tr>
+            <th th:each = "heading : ${heading}" th:text = "${heading}"></th>
+        </tr>
+        <tr th:each = "user : ${users}" th:object = "${user}">
+            <td th:text = "*{id}"></td>
+            <td th:text = "*{username}"></td>
+            <td th:text = "*{email}"></td>
+            <td th:text = "*{fName}"></td>
+            <td th:text = "*{lName}"></td>
+            <td>
+                <span th:each = "role : *{roles}" th:text = "${role.name}"></span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -43,6 +43,8 @@ public class FoodController {
         }
 
         model.addAttribute("title", type.toUpperCase());
+
+
         List<Recipe> recipes = recipeService.getAllRecipeByType(recipeType);
 
         if (recipes.isEmpty()) {
@@ -51,27 +53,42 @@ public class FoodController {
             model.addAttribute("recipes", recipes);
         }
 
+
         return "recipe/genericRecipePage";
     }
 
     @GetMapping("/recipe/id={id}")
     public String recipePage(@PathVariable int id, Model model) {
-        User user = userService.getLoggedInUser();
+        User user = null;
+        
+        try {
+            user = userService.getLoggedInUser();
+        } catch (RuntimeException e) {
+            e.getMessage();
+        }
+
+        
         model.addAttribute("commentRequest", new CommentRequest());
+
 
         try {
             Recipe recipe = recipeService.getRecipeById(id);
             model.addAttribute("recipe", recipe);
 
             if (recipe.getComments().isEmpty()) {
-                model.addAttribute("empty", "There are no Comments on this Recipe page.");
+                model.addAttribute("empty", false);
             }
 
-            boolean hasComment = commentService.hasUserCommentOnRecipe(user, recipe);
-            model.addAttribute("hasComment", hasComment);
+            if (user != null) {
+                boolean hasComment = commentService.hasUserCommentOnRecipe(user, recipe);
+                boolean isAuthor = recipe.getUser().equals(user);
+                model.addAttribute("hasComment", hasComment);
+                model.addAttribute("isAuthor", isAuthor);
+            } else {
+                model.addAttribute("hasComment", false);
+                model.addAttribute("isAuthor", false);
+            }
 
-            boolean isAuthor = recipe.getUser().equals(user);
-            model.addAttribute("isAuthor", isAuthor);
 
             return "recipe/genericRecipe";
 

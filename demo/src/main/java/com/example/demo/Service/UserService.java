@@ -6,4 +6,5 @@ import com.example.demo.Request.UserRequest;
 
 public interface UserService extends UserDetailsService {
     void save(UserRequest userRequest);
+    boolean userExistByEmail(String email);
 }

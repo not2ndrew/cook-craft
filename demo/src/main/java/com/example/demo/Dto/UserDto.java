@@ -12,7 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
-    private Set<Role> role;
+    private int id;
+    private String username;
     private String email;
-    private String password;
+    private String fName;
+    private String lName;
+    private Set<Role> roles; 
 }

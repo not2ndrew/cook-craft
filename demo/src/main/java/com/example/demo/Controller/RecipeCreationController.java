@@ -18,17 +18,14 @@ import com.example.demo.Request.RecipeRequest;
 import com.example.demo.Service.RecipeService;
 import com.example.demo.Service.UserServiceImpl;
 
+import lombok.RequiredArgsConstructor;
+
 
 @Controller
+@RequiredArgsConstructor
 public class RecipeCreationController {
     private final UserServiceImpl userService;
     private final RecipeService recipeService;
-
-
-    public RecipeCreationController(UserServiceImpl userService, RecipeService recipeService) {
-        this.userService = userService;
-        this.recipeService = recipeService;
-    }
 
     
     @GetMapping("/home/recipe")
