@@ -9,11 +9,11 @@
 </head>
 
 <body>
-    <div class = "form_h1">
+    <div class = "form-h1">
         <h1>Login Page</h1>
     </div>
 
-    <div class = "form_container">
+    <div class = "form-container">
         <div class = "message" th:if = "${logout}">
             <p>You have successfully logged out</p>
         </div>
@@ -24,19 +24,19 @@
 
         <form th:action = "@{/login}" th:object = "${userRequest}" method = "post" >
             <!-- If the Email already exists within the database, use Thymeleaf to notify the client. -->
-            <div class = "input_container">
+            <div class = "input-container">
                 <!-- Very important to put name = "username" instead of "email" because UserDetails. -->
                 <input type = "text" id = "username" name = "username" placeholder = "Email">
                 <input type = "password" id = "password" name = "password" placeholder = "Password">
             </div>
             
-            <div class = "input_container">
+            <div class = "input-container">
                 <input type = "submit" class = "btn">
             </div>
         </form>
 
-        <div class = "box_p"><p>Need to create an account? <a th:href = "@{register}">Sign in</a></p></div>
-        <div class = "box_p"><a th:href = "@{/}">Go Back</a></div>
+        <div class = "box-p"><p>Need to create an account? <a th:href = "@{register}">Sign in</a></p></div>
+        <div class = "box-p"><a th:href = "@{/}">Go Back</a></div>
     </div>
 </body>
 </html>

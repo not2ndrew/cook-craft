@@ -62,7 +62,7 @@ body {
     padding: 4rem 0;
 }
 
-.box_h2 {
+.box-h2 {
     padding-bottom: 3rem;
 }
 
@@ -91,30 +91,30 @@ nav ul {
     display: flex;
     justify-content: center;
 
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/burger_banner.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/burger-banner.jpg");
     background-position: center;
     background-size: cover;
 }
 
-.box_h1 {
+.box-h1 {
     text-align: center;
     padding: 5%;
 }
 
-#sub_header {
+#sub-header {
     color: white;
 }
 
 
 /* RECIPES */
-.img_container {
+.img-container {
     display: flex;
     justify-content: space-evenly;
     text-align: center;
     margin-top: 10%;
 }
 
-.img_box {
+.img-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -147,7 +147,7 @@ img {
 
 /* ABOUT */
 /* REGISTRATION */
-.btn_container {
+.btn-container {
     display: flex;
     margin-top: 2rem;
 }
@@ -164,7 +164,7 @@ img {
     cursor: pointer;
 }
 
-#sign_up {
+#sign-up {
     background-color: chocolate;
     margin-right: 2rem;
 }
@@ -185,12 +185,12 @@ footer {
 
 
 /* REGISTRATION FORM */
-.form_container {
+.form-container {
     width: 50%;
     margin: auto;
 }
 
-.input_container {
+.input-container {
     display: flex;
     margin-bottom: 2rem;
 }
@@ -201,7 +201,7 @@ input {
     padding: 1.5rem;
 }
 
-.form_h1 h1 {
+.form-h1 h1 {
     text-align: center;
     color: black;
     margin-bottom: 10rem;

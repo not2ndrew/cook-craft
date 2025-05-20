@@ -18,5 +18,4 @@ public class RecipeRequestMapper implements Function<Recipe, RecipeRequest> {
             recipe.getRecipeType()
         );
     }
-
 }

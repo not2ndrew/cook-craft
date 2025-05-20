@@ -26,19 +26,19 @@
         </div>
     </div>
     <!-- Note: a different font for the rating-->
-    <div class = "container" id = "recipe_container">
+    <div class = "container" id = "recipe-container">
         <div class = "post" th:each = "recipe : ${recipes}" th:object = "${recipe}">
             <a th:href = "@{'/recipe/id=' + *{id}}">
-                <div class = "box_post">
+                <div class = "box-post">
                     <p th:text = "*{user.username}"></p>
                 </div>
-                <div class = "box_post">
+                <div class = "box-post">
                     <h3 th:text = "*{title}"></h3>
                 </div>
-                <div class = "box_post">
+                <div class = "box-post">
                     <p th:text = "*{description}"></p>
                 </div>
-                <div class = "box_post" id = "average_rating">
+                <div class = "box-post" id = "average-rating">
                     <!-- Java cannot handle 0 / 0. So we will manually insert it ourselves -->
                     <p th:text = "*{(numOfRating == 0) ? 0 : #numbers.formatDecimal(ratingSum / numOfRating, 1, 1)} + ' / 10, ' + *{numOfRating}"></p>
                 </div>

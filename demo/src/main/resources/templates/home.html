@@ -11,23 +11,23 @@
 
 <body>
     <nav>
-        <div class = "nav_container">
-            <div class = "nav_box">
+        <div class = "nav-container">
+            <div class = "nav-box">
                 <a>View Your Created Recipes</a>
             </div>
-            <div class = "nav_box">
+            <div class = "nav-box">
                 <a>View Favourited Recipes</a>
             </div>
             <!-- Admins and Managers can view all users -->
             <!-- Admins can also delete users and comments except for admins and manager roles -->
             <!-- Managers can delete anything (except managers) -->
             <!-- The ability to delete will be shown within the View All Users page. -->
-            <div class = "nav_box" sec:authorize = "hasAnyRole('ADMIN', 'MANAGER')">
-                <a th:href = "@{home/users}">View All Users</a>
+            <div class = "nav-box" sec:authorize = "hasAnyRole('ADMIN', 'MANAGER')">
+                <a th:href = "@{home/getAllUsers}">View All Users</a>
             </div>
         </div>
-        <div class = "nav_container" id = "nav_special">
-            <div class = "nav_box">
+        <div class = "nav-container" id = "nav-special">
+            <div class = "nav-box">
                 <a href = "javascript: document.logoutForm.submit()">Logout</a>
                 <form name = "logoutForm" th:action = "@{/logout}" method = "post" style = "display: none;">
                     <input type = "submit" style = "display: none;">
@@ -37,7 +37,7 @@
 
     </nav>
 
-    <div class = "box_h1">
+    <div class = "box-h1">
         <h1>Home Page</h1>
     </div>
     
@@ -50,31 +50,31 @@
     <!-- TO DO: Make a link connecting to Food recipes already posted. -->
     <div class = "box">
         <p>View the Recipes created by others here</p>
-        <div class = "img_container">
+        <div class = "img-container">
             <a th:href = "@{/home/appetizer}">
-                <div class = "img_box" id = "appetizer">
-                    <img src = "img/appetizer_icon.png" alt = "Appetizer_icon">
+                <div class = "img-box" id = "appetizer">
+                    <img src = "img/appetizer-icon.png" alt = "Appetizer-icon">
                     <h2>Appetizer</h2>
                 </div>
             </a>
             
             <a th:href = "@{/home/meal}">
-                <div class = "img_box" id = "meal">
-                    <img src = "img/meal_icon.png" alt = "Meal_icon">
+                <div class = "img-box" id = "meal">
+                    <img src = "img/meal-icon.png" alt = "Meal-icon">
                     <h2>Meals</h2>
                 </div>
             </a>
 
             <a th:href = "@{/home/dessert}">
-                <div class = "img_box" id = "dessert">
-                    <img src = "img/dessert_icon.png" alt = "Dessert_icon">
+                <div class = "img-box" id = "dessert">
+                    <img src = "img/dessert-icon.png" alt = "Dessert-icon">
                     <h2>Deserts</h2>
                 </div>
             </a>
 
             <a th:href = "@{/home/drink}">
-                <div class = "img_box" id = "drink">
-                    <img src = "img/drink_icon.png" alt = "Drink_icon">
+                <div class = "img-box" id = "drink">
+                    <img src = "img/drink-icon.png" alt = "Drink-icon">
                     <h2>Drinks</h2>
                 </div>
             </a>

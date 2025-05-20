@@ -7,15 +7,15 @@ let numOfSteps = 0;
 
 // Ingredient Elements
 const ingredientBtn = document.getElementById("createIngredient");
-const ingredientList = document.getElementById("ingredient_container");
-const ingredientInput = document.getElementById("ingredient_text");
-const unitSelect = document.getElementById("unit_select");
-const amountInput = document.getElementById("amount_input");
+const ingredientList = document.getElementById("ingredient-container");
+const ingredientInput = document.getElementById("ingredient-text");
+const unitSelect = document.getElementById("unit-select");
+const amountInput = document.getElementById("amount-input");
 
 // Instruction Elements
 const instructionBtn = document.getElementById("createInstruction");
-const instructionList = document.getElementById("instruction_container");
-const step_input = document.getElementById("step_text");
+const instructionList = document.getElementById("instruction-container");
+const step_input = document.getElementById("step-text");
 
 const form = document.getElementById("submit");
 
@@ -30,7 +30,7 @@ unitSelect.addEventListener("change", (event) => {
             const input = document.createElement("input");
             input.type = "text";
             input.name = "ingredientUnit";
-            input.className = "text_input"
+            input.className = "text-input"
             input.id = "customUnitInput";
             input.placeholder = "Enter Custom Unit";
         

@@ -49,25 +49,25 @@
         <hr />
 
         <!-- Comment Section -->
-        <div class = "container_error" th:if = "${isAuthor}">
+        <div class = "container-error" th:if = "${isAuthor}">
             <p>You cannot comment on your own Recipe</p>
         </div>
 
-        <div class = "container_error" th:if = "${empty}">
+        <div class = "container-error" th:if = "${empty}">
             <p>There are no Comments on this Recipe page.</p>
         </div>
 
-        <div class = "container_error" th:if = "${hasComment}">
+        <div class = "container-error" th:if = "${hasComment}">
             <p>You have already commented on this recipe.</p>
         </div>
 
-        <div class = "container_error" sec:authorize = "!isAuthenticated()">
+        <div class = "container-error" sec:authorize = "!isAuthenticated()">
             <p>To write a review. You must create an account. Press the link below to sign up</p>
             <a th:href = "@{/register}">Sign up!</a>
         </div>
 
-        <div class = "container" id = "comment_container" th:if = "${!isAuthor} and ${!hasComment}" sec:authorize = "isAuthenticated()">
-            <form id = "comment_form" th:action = "@{'/comment/' + ${recipe.id}}" th:object = "${commentRequest}" method = "post">
+        <div class = "container" id = "comment-container" th:if = "${!isAuthor} and ${!hasComment}" sec:authorize = "isAuthenticated()">
+            <form id = "comment-form" th:action = "@{'/comment/' + ${recipe.id}}" th:object = "${commentRequest}" method = "post">
                 <div>
                     <p>Write a title for your review</p>
                     <input type = "text" th:field = "*{title}" placeholder = "Title">
@@ -89,9 +89,9 @@
         <hr />
         
         <!-- If not empty, then populate list of comments -->
-        <div class = "container" id = "comment_section" th:each = "comment : *{comments}" th:object = "${comment}">
-            <div class = "comment_block">
-                <div id = "comment_title">
+        <div class = "container" id = "comment-section" th:each = "comment : *{comments}" th:object = "${comment}">
+            <div class = "comment-block">
+                <div id = "comment-title">
                     <h2 th:text = "*{title}"></h2>
                     <h3 th:text = "*{ratings}"></h3>
                 </div>
@@ -102,20 +102,20 @@
                 </div>
             </div>
 
-            <div id = "comment_description">
+            <div id = "comment-description">
                 <p th:text = "*{description}"></p>
             </div>
 
             <!-- Add a thumbs up and thumbs down icon -->
-            <div id = "comment_likes">
+            <div id = "comment-likes">
                 <div class = "thumbs">
                     <h3 th:text = "*{likes} + ' likes'"></h3>
-                    <img src = "" id = "thumbsUp" alt = "Thumbs_up_icon">
+                    <img src = "" id = "thumbsUp" alt = "Thumbs-up-icon">
                 </div>
 
                 <div class = "thumbs">
                     <h3 th:text = "*{dislikes} + ' dislikes'"></h3>
-                    <img src = "" id = "thumbsDown" alt = "Thumbs_down_icon">
+                    <img src = "" id = "thumbsDown" alt = "Thumbs-down-icon">
                 </div>
             </div>
 

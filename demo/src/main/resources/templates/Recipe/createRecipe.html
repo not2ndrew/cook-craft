@@ -23,11 +23,11 @@
         </div>
 
         <div class = "box">
-            <input type = "text" class = "text_input" id = "title" th:field = "*{title}" placeholder = "Title">
+            <input type = "text" class = "text-input" id = "title" th:field = "*{title}" placeholder = "Title">
         </div>
 
         <div class = "box">
-            <input type = "text" class = "text_input" id = "description" th:field = "*{description}" placeholder = "Description">
+            <input type = "text" class = "text-input" id = "description" th:field = "*{description}" placeholder = "Description">
         </div>
 
         <div class = "box">
@@ -42,22 +42,22 @@
         <!-- Text inputs are retrieved via Javascript and @RequestParam from RecipeCreationController -->
         <div class = "box">
             <h2>Ingredients: </h2>
-            <div class = "ingredient_row">
-                <input type = "number" class = "text_input" id = "amount_input" min = "1" max = "1000" placeholder = "Amount">
+            <div class = "ingredient-row">
+                <input type = "number" class = "text-input" id = "amount-input" min = "1" max = "1000" placeholder = "Amount">
 
-                <select id = "unit_select">
+                <select id = "unit-select">
                     <option disabled selected value = "">-- Select --</option>
                     <option value = "custom">Custom Unit</option>
                     <option th:each = "unit : ${units}" th:value = "${unit}" th:text = "${unit}"></option>
                 </select>
                 
-                <input type = "text" class = "text_input" id = "ingredient_text" placeholder = "Ingredient">
+                <input type = "text" class = "text-input" id = "ingredient-text" placeholder = "Ingredient">
             </div>
 
 
             <button type = "button" class = "btn" id = "createIngredient">Create Ingredient</button>
             
-            <ul id = "ingredient_container"></ul>
+            <ul id = "ingredient-container"></ul>
         </div>
         
         <!-- Dynamic Instruction Section -->
@@ -65,11 +65,11 @@
         <div class = "box">
             <h2>Instructions: </h2>
 
-            <input type = "text" class = "text_input" id = "step_text">
+            <input type = "text" class = "text-input" id = "step-text">
 
             <button type = "button" class = "btn" id = "createInstruction">Create Instructions</button>
 
-            <ol id = "instruction_container"></ol>
+            <ol id = "instruction-container"></ol>
         </div>
 
         <input type = "submit" id = "submit" placeholder = "Submit">

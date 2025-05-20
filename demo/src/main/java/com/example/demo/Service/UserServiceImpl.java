@@ -66,11 +66,15 @@ public class UserServiceImpl implements UserService {
             .toList();
     }
 
-    public void deleteUserByEmail(String email) {
-        User user = userRepository.findUserByEmail(email)
-            .orElseThrow(() -> new RuntimeException("Email: " + email + "was not found."));
-        
-        userRepository.delete(user);
+    public void deleteUserById(int id) {
+        userRepository.deleteById(id);
+    }
+
+    public UserDto findUserById(int id) {
+        return userRepository.findById(id)
+            .map(userDtoMapper)
+            .orElseThrow(() -> new RuntimeException("User with id: " + id + " was not found"));
+            
     }
 
     /* OVERRIDE METHODS */
@@ -156,5 +160,10 @@ public class UserServiceImpl implements UserService {
         String email = auth.getName(); // Because email is used as the username
         return userRepository.findUserByEmail(email)
             .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+    }
+
+    public UserDto getLoggedInUserDto() {
+        User user = getLoggedInUser();
+        return userDtoMapper.apply(user);
     }
 }

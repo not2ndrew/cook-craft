@@ -71,7 +71,7 @@ input, select {
     padding: 1rem 0;
 }
 
-.ingredient_row {
+.ingredient-row {
     display: flex;
     flex-direction: column;
 }
@@ -82,7 +82,7 @@ input, select {
     width: 30rem;
 }
 
-.text_input, select {
+.text-input, select {
     height: 5rem;
     width: 20%;
 }

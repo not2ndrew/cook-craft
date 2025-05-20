@@ -59,12 +59,12 @@ body {
 
 
 /* BOXES, CONTAINERS */
-.box_h1 {
+.box-h1 {
     display: flex;
     align-items: center;
 }
 
-#recipe_container {
+#recipe-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
@@ -88,25 +88,25 @@ nav {
     background-color: burlywood;
 }
 
-.nav_container {
+.nav-container {
     width: 50%;
     display: flex;
     justify-content: space-evenly;
 }
 
-#nav_special {
+#nav-special {
     justify-content: end;
 }
 
 /* RECIPES */
-.img_container {
+.img-container {
     display: flex;
     justify-content: space-evenly;
     text-align: center;
     margin-top: 5%;
 }
 
-.img_box {
+.img-box {
     display: flex;
     flex-direction: column;
     justify-content: center;

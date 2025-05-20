@@ -22,5 +22,4 @@ public class UserRequestMapper implements Function<User, UserRequest> {
             user.getRoles()
         );
     }
-
 }

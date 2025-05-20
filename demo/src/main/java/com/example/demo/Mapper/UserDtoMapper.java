@@ -21,5 +21,4 @@ public class UserDtoMapper implements Function<User, UserDto>{
             user.getRoles()
         );
     }
-
 }

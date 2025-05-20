@@ -66,18 +66,18 @@ body {
 
 
 /* BOXES, CONTAINERS */
-.box_h1 {
+.box-h1 {
     display: flex;
     align-items: center;
 }
 
-.container_error {
+.container-error {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#recipe_container {
+#recipe-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
@@ -93,11 +93,11 @@ body {
     border-style: solid;
 }
 
-.box_post {
+.box-post {
     margin-bottom: 0.3rem;
 }
 
-#average_rating {
+#average-rating {
     display: flex;
 }
 
@@ -111,7 +111,7 @@ body {
     margin: 0 auto;
 }
 
-.container, hr, .container_error {
+.container, hr, .container-error {
     margin-bottom: 3rem;
 }
 
@@ -126,7 +126,7 @@ body {
 }
 
 /* Comment Form */
-#comment_form {
+#comment-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -139,7 +139,7 @@ body {
 
 
 /* Comment Section */
-#comment_section {
+#comment-section {
     display: flex;
     flex-direction: column;
     background-color: aliceblue;
@@ -149,17 +149,17 @@ body {
     gap: 5rem;
 }
 
-.comment_block {
+.comment-block {
     display: flex;
     justify-content: space-between;
 }
 
-#comment_description {
+#comment-description {
     padding: 3rem;
     background-color: white;
 }
 
-#comment_likes {
+#comment-likes {
     display: flex;
     gap: 2rem;
 }
@@ -169,7 +169,7 @@ body {
     width: 100rem;
 }
 
-#comment_container {
+#comment-container {
     display: flex;
     flex-direction: column;
     align-items: center;
