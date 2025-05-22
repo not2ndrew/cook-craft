@@ -70,11 +70,16 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
-    public UserDto findUserById(int id) {
+    public User findUserById(int id) {
+        return userRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("User with id: " + id + " was not found"));
+            
+    }
+
+    public UserDto findUserDtoById(int id) {
         return userRepository.findById(id)
             .map(userDtoMapper)
             .orElseThrow(() -> new RuntimeException("User with id: " + id + " was not found"));
-            
     }
 
     /* OVERRIDE METHODS */

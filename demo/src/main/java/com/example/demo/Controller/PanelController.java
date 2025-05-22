@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.Dto.RecipeDto;
 import com.example.demo.Dto.UserDto;
 import com.example.demo.Entity.Role;
 import com.example.demo.Entity.User;
 import com.example.demo.Enum.RoleName;
 import com.example.demo.Repository.RoleRepository;
+import com.example.demo.Service.RecipeService;
 import com.example.demo.Service.UserServiceImpl;
 
 import lombok.RequiredArgsConstructor;
@@ -25,8 +27,9 @@ import static com.example.demo.Enum.RoleName.*;
 
 @Controller
 @RequiredArgsConstructor
-public class UserController {
+public class PanelController {
     private final UserServiceImpl userService;
+    private final RecipeService recipeService;
     private final RoleRepository roleRepository;
 
 
@@ -71,12 +74,31 @@ public class UserController {
         return "ControlPanel/userList";
     }
 
+    @GetMapping("/home/recipeList/{id}")
+    public String getRecipesPage(@PathVariable int id, Model model) {
+        try {
+            User user = userService.findUserById(id);
+            List<RecipeDto> recipes = recipeService.getRecipeList(user);
+
+            if (recipes.isEmpty()) {
+                model.addAttribute("empty", "User: " + user.getUsername() + " has not created a recipe.");
+            }
+
+            model.addAttribute("recipes", recipes);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+
+        return "ControlPanel/recipeList";
+    }
+
+    
     @DeleteMapping("/home/deleteUser/{id}")
     @ResponseBody
     public ResponseEntity<Void> deleteUser(@PathVariable int id, Model model) {
         try {
             UserDto currentUser = userService.getLoggedInUserDto();
-            UserDto userToDelete = userService.findUserById(id);
+            UserDto userToDelete = userService.findUserDtoById(id);
 
             if (currentUser == null) {
                 return ResponseEntity.notFound().build();
@@ -91,5 +113,22 @@ public class UserController {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
+
+    @DeleteMapping("/home/deleteRecipe/{id}")
+    @ResponseBody
+    public ResponseEntity<Void> deleteRecipe(@PathVariable int id, Model model) {
+        try {
+            recipeService.deleteRecipeById(id);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/error/403")
+    public String errorPage() {
+        return "error403";
     }
 }

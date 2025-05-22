@@ -5,9 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 
 import com.example.demo.Service.UserService;
 
@@ -18,10 +18,6 @@ import lombok.RequiredArgsConstructor;
 
 /* I have used this website for security */
 // https://www.geeksforgeeks.org/spring-security-role-based-authentication/
-
-    // TO DO: Create an Error 403 Page
-    // This is a fantastic page. Use that, or grab some meme on google images.
-    // https://codepen.io/marianab/pen/EedpEb
 
 @Configuration
 @EnableWebSecurity
@@ -36,7 +32,7 @@ public class SecurityConfig {
         return http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(request -> {
-                request.requestMatchers("/users").hasRole("ADMIN");
+                request.requestMatchers("/home/getAllUsers").hasAnyRole("MANAGER", "ADMIN");
                 request.requestMatchers("/home/recipe").hasAnyRole("USER", "ADMIN", "MANAGER");
                 request.anyRequest().permitAll();
             })
@@ -49,6 +45,7 @@ public class SecurityConfig {
                 logout.logoutUrl("/logout");
                 logout.logoutSuccessUrl("/login?logout");
             })
+            .exceptionHandling(ex -> ex.accessDeniedPage("/error/403"))
             .sessionManagement(session -> session.maximumSessions(1))
             .build();
     }

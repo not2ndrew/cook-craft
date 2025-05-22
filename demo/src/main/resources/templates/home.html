@@ -13,10 +13,7 @@
     <nav>
         <div class = "nav-container">
             <div class = "nav-box">
-                <a>View Your Created Recipes</a>
-            </div>
-            <div class = "nav-box">
-                <a>View Favourited Recipes</a>
+                <a th:href = "@{/home/createdRecipes}">View Your Created Recipes</a>
             </div>
             <!-- Admins and Managers can view all users -->
             <!-- Admins can also delete users and comments except for admins and manager roles -->
@@ -44,10 +41,9 @@
 
     <div class = "box">
         <p>To create a recipe, click on the button</p>
-        <a th:href = "@{home/recipe}">Placeholder</a>
+        <a th:href = "@{home/recipe}">Create a Recipe here</a>
     </div>
 
-    <!-- TO DO: Make a link connecting to Food recipes already posted. -->
     <div class = "box">
         <p>View the Recipes created by others here</p>
         <div class = "img-container">

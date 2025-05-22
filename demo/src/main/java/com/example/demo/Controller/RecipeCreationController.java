@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.Dto.RecipeDto;
 import com.example.demo.Entity.Ingredient;
 import com.example.demo.Entity.User;
 import com.example.demo.Enum.RecipeType;
@@ -71,6 +72,23 @@ public class RecipeCreationController {
             e.printStackTrace();
             return "recipe/createRecipe";
         }
+    }
 
+    @GetMapping("/home/createdRecipes")
+    public String viewCreatedRecipes(Model model) {
+        try {
+            User user = userService.getLoggedInUser();
+            List<RecipeDto> recipes = recipeService.getRecipeList(user);
+
+            if (recipes.isEmpty()) {
+                model.addAttribute("empty", true);
+            }
+            
+            model.addAttribute("recipes", recipes);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+
+        return "recipe/viewCreatedRecipes";
     }
 }

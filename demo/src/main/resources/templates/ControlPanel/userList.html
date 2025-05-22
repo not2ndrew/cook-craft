@@ -33,6 +33,10 @@
                 th:attr="data-user-id=*{id}" 
                 th:if = "*{email} != ${currentUser.email}">Delete</button>
             </td>
+
+            <td>
+                <a th:href = "@{'/home/recipeList/' + *{id}}">Recipe</a>
+            </td>
         </tr>
     </table>
     <script>

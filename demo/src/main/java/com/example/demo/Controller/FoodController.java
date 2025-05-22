@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.example.demo.Dto.RecipeDto;
 import com.example.demo.Entity.Recipe;
 import com.example.demo.Entity.User;
 import com.example.demo.Enum.RecipeType;
@@ -45,7 +46,7 @@ public class FoodController {
         model.addAttribute("title", type.toUpperCase());
 
 
-        List<Recipe> recipes = recipeService.getAllRecipeByType(recipeType);
+        List<RecipeDto> recipes = recipeService.getAllRecipeByType(recipeType);
 
         if (recipes.isEmpty()) {
             model.addAttribute("empty", "There are no recipes in " + recipeType);
@@ -76,7 +77,7 @@ public class FoodController {
             model.addAttribute("recipe", recipe);
 
             if (recipe.getComments().isEmpty()) {
-                model.addAttribute("empty", false);
+                model.addAttribute("empty", true);
             }
 
             if (user != null) {

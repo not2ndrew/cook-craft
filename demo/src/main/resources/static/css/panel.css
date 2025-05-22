@@ -70,3 +70,34 @@ td, th {
     height: 5rem;
     vertical-align: middle;
 }
+
+/* RECIPELIST */
+#recipe-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 3rem;
+    padding: 1rem;
+    background-color: mistyrose;
+    border-radius: 0.3rem;
+    border-style: solid;
+}
+
+.box-post {
+    margin-bottom: 0.3rem;
+}
+
+#average-rating {
+    display: flex;
+}
+
+.container-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
